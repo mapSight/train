@@ -1,0 +1,109 @@
+html, body, #map {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    cursor: default;
+}
+
+.popupMain {
+    z-index: 999;
+    height: 221px;
+    width: 414px;
+    display: none;
+    background-image: url("../image/popup.png");
+}
+
+.leftImage {
+    text-align: left;
+    padding-top: 32px;
+    padding-left: 10px !important;
+}
+
+.rightInfo {
+    text-align: left;
+    padding-top: 32px;
+    padding-left: 0px !important;
+}
+
+.popupImage {
+    width: 90%;
+    height: 136px;
+}
+
+.popupTitle {
+    color: white;
+    font-size: 22px;
+}
+
+.popupContent {
+    color: white;
+}
+
+.bottomDiv {
+    margin-left: 10px;
+    margin-top: 6px;
+}
+.leaflet-control-attribution{
+    display: none;
+}
+
+.leaflet-popup-content-wrapper {
+    background: none !important;
+    box-shadow: none !important;
+    margin-bottom: -13px !important;
+}
+
+.leaflet-popup-tip {
+    background: #49a9ee !important;
+}
+
+.leaflet-div-icon {
+    background: none;
+    border: none;
+}
+
+.modal-dialog {
+    width: 90% !important;
+    height: 100%;
+}
+
+.logoDIV {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.logo {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    z-index: 999;
+    left: 50%;
+    margin-left: -25%;
+}
+
+.divIframe {
+    text-align: center;
+    background-color: #ffffff;
+    width: 710px;
+    height: 400px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.htmlIframe {
+    width: 100%;
+    height: 100%;
+}
+
+.kmDiv{
+    display: none;
+    color: #000;
+    font-size: 8px;
+    font-weight: bold;
+    -webkit-text-stroke: 1px #fff;
+}
+.station. ,trouble{
+    z-index: 9999999;
+}

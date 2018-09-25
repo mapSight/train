@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京广高铁安全环境智能管控系统</title>
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="libs/leaflet.css">
+    <link rel="stylesheet" href="css/map.css">
+    <script src="libs/leaflet.js"></script>
+    <script src="libs/leaflet-ant-path.js"></script>
+    <script src="libs/jquery-1.11.0.js"></script>
+    <script src="libs/bootstrap/js/bootstrap.js"></script>
+    <script src="data/railway.js"></script>
+    <script src="data/station.js"></script>
+    <script src="libs/360/pano2vr_player.js"></script>
+    <script src="libs/360/skin.js"></script>
+
+</head>
+<body>
+<!--全景-->
+<div class="modal fade" id="panoramaModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">全景</h4>
+            </div>
+            <div class="modal-body">
+                <div style="width:100%" id='container'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--隐患点-->
+<div class="divIframe" style="display:none; position: absolute; bottom: 10px; right: 10px; background-color: #fff; width: 710px; height: 600px; overflow: hidden; z-index: 999">
+
+</div>
+<!--地图容器-->
+<div id="map">
+    <div class="logoDIV"><img class="logo" src="image/logo.png"></div>
+</div>
+<script src="js/map.js"></script>
+</body>
+</html>
