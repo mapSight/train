@@ -3,6 +3,7 @@ var map = L.map('map', {
     zoom: 9
 });
 
+//控制marker图层加载
 var markersLayer =  L.layerGroup();
 
 map.on("click", function (event) {
