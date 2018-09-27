@@ -19,6 +19,7 @@ function addTroubleEvent() {
                     iconUrl: 'image/trouble/' + trouble.安全色 + '.png',
                     iconSize: [32, 32]
                 }),
+                title:trouble.铁路里程,
                 data: trouble
             }).on("click", function (event) {
                 var html = "<table class='tipClass' border='1' cellspacing='0' cellpadding='0'>";
