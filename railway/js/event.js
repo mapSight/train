@@ -2,11 +2,11 @@
  * 添加隐患锚点
  */
 
-var troubleEventLayers = L.featureGroup();
-
-function addTrobuleEvent() {
+function addTroubleEvent() {
 
     function addTroubleMarker(troubles) {
+        var troubleEventLayers = L.featureGroup();
+
         for (var i = 0; i < troubles.length; i++) {
             var trouble = troubles[i];
 
@@ -25,8 +25,18 @@ function addTrobuleEvent() {
                 })
             }).bindPopup(html).addTo(troubleEventLayers);
         }
+        return troubleEventLayers;
     }
 
     // 京广铁路沿线锚点
-    addTroubleMarker(DATA_TROUBLES_GJ);
+    trouble_jg = addTroubleMarker(DATA_TROUBLES_JG);
+
+    // 汉宜铁路沿线锚点
+    trouble_hy = addTroubleMarker(DATA_TROUBLES_HY);
+
+    // 合武铁路沿线锚点
+    trouble_hw = addTroubleMarker(DATA_TROUBLES_HW);
+
+    // 宜万铁路沿线锚点
+    trouble_yw = addTroubleMarker(DATA_TROUBLES_YW);
 }

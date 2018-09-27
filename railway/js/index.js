@@ -31,7 +31,17 @@ var hy_group = null;
 var hw_group = null;
 var yw_group = null;
 
-var stationLayer = null;
+// 车站
+var station_jg = null;
+var station_hy = null;
+var station_hw = null;
+var station_yw = null;
+
+// 隐患锚点
+var trouble_jg = null;
+var trouble_hy = null;
+var trouble_hw = null;
+var trouble_yw = null;
 
 initMap();
 
@@ -39,7 +49,7 @@ addRailway();
 
 addAssistPoint();
 
-addTrobuleEvent();
+addTroubleEvent();
 
 addControl();
 

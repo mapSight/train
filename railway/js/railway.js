@@ -44,22 +44,22 @@ function addRailway() {
     }
 
     // 京广铁路里程
-    mileStone_jg = addMileMarker(DATA_MILESTONE_JG, "kmDiv_jg");
+    mileStone_jg = addMileMarker(DATA_MILESTONE_JG);
 
     // 汉宜铁路里程
-    mileStone_hy = addMileMarker(DATA_MILESTONE_HY, "kmDiv_hy");
+    mileStone_hy = addMileMarker(DATA_MILESTONE_HY);
 
     // 合武铁路里程
-    mileStone_hw = addMileMarker(DATA_MILESTONE_HW, "kmDiv_hw");
+    mileStone_hw = addMileMarker(DATA_MILESTONE_HW);
 
     // 宜万铁路里程
-    mileStone_yw = addMileMarker(DATA_MILESTONE_YW, "kmDiv_yw");
+    mileStone_yw = addMileMarker(DATA_MILESTONE_YW);
 
     /**
      * ***************************************************添加高铁车站
      */
-    stationLayer = L.featureGroup();
     function addStationMarker(stations) {
+        var stationLayer = L.featureGroup();
         for (var i = 0; i < stations.length; i++) {
             var s = stations[i];
             L.marker([s.lat, s.lng], {
@@ -70,8 +70,18 @@ function addRailway() {
                 title: s.name
             }).addTo(stationLayer);
         }
+        return stationLayer;
     }
 
     // 京广铁路车站
-    addStationMarker(DATA_STATIONS_JG);
+    station_jg = addStationMarker(DATA_STATIONS_JG);
+
+    // 汉宜铁路车站
+    station_hy = addStationMarker(DATA_STATIONS_HY);
+
+    // 合武铁路车站
+    station_hw = addStationMarker(DATA_STATIONS_HW);
+
+    // 宜万铁路车站
+    station_yw = addStationMarker(DATA_STATIONS_YW);
 }
