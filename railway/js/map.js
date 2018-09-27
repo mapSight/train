@@ -1,5 +1,5 @@
 var map = L.map('map', {
-    center: [33.0025272757331, 113.9726507663727],
+    center: [30.60968830483705, 114.41888988018037],
     zoom: 9
 });
 
@@ -67,7 +67,7 @@ for (var i = 0; i < stations.length; i++) {
     }).on("click", function (event) {
         var station = event.target.options.title;
         //***********************************************目前只放驻马店西站的全景***********************
-        if (station == "驻马店西站") {
+        if (station == "驻马店西站" ||station == "武汉站"  ) {
             $(".modal-title").html(station + " 全景图");
             $(".modal-body #container").css("height", $(window).height() - 200);
             $("#panoramaModal").modal('show');
@@ -145,90 +145,21 @@ var marker8 = L.marker([32.78085234570831, 113.99156570434572], {
 });
 
 // 添加隐患点
-var marker9 = L.marker([32.851813327015584, 113.99203777313234], {
-    icon: L.icon({
-        iconUrl: 'image/trouble/chen.png',
-        iconSize: [24, 39],
-        className: "trouble"
-    })
-}).on("click", function () {
-    $(".modal-title").html("隐患点一事一档");
-    $("#troubleModal").modal('show');
-    $(".divIframe").html("<iframe class=\"htmlIframe\" src=\"data/trouble/驻明下1/index.html\"></iframe></div>");
-    $(".divIframe").show();
-});
-var marker10 = L.marker([33.09531668448731, 113.9642071723938], {
-    icon: L.icon({
-        iconUrl: 'image/trouble/chen.png',
-        iconSize: [24, 39],
-        className: "trouble"
-    })
-}).on("click", function () {
-    $(".modal-title").html("隐患点一事一档");
-    $("#troubleModal").modal('show');
-    $(".divIframe").html("<iframe class=\"htmlIframe\" src=\"data/trouble/漯驻下14/index.html\"></iframe></div>");
-    $(".divIframe").show();
-});
-var marker11 =  L.marker([33.40883924584695, 113.95015239715578], {
-    icon: L.icon({
-        iconUrl: 'image/trouble/huang.png',
-        iconSize: [24, 39],
-        className: "trouble"
-    })
-}).on("click", function () {
-    $(".modal-title").html("隐患点一事一档");
-    $("#troubleModal").modal('show');
-    $(".divIframe").html("<iframe class=\"htmlIframe\" src=\"data/trouble/漯驻下8/index.html\"></iframe></div>");
-    $(".divIframe").show();
-});
-var marker12 = L.marker([33.34198361607432, 113.95186901092531], {
-    icon: L.icon({
-        iconUrl: 'image/trouble/hong.png',
-        iconSize: [24, 39],
-        className: "trouble"
-    })
-}).on("click", function () {
-    $(".modal-title").html("隐患点一事一档");
-    $("#troubleModal").modal('show');
-    $(".divIframe").html("<iframe class=\"htmlIframe\" src=\"data/trouble/漯驻下10/index.html\"></iframe></div>");
-    $(".divIframe").show();
-});
-var marker13 = L.marker([33.09369878898091,113.96328449249269], {
-    icon: L.icon({
-        iconUrl: 'image/trouble/hong.png',
-        iconSize: [24, 39],
-        className: "trouble"
-    })
-}).on("click", function () {
-    $(".modal-title").html("隐患点一事一档");
-    $("#troubleModal").modal('show');
-    $(".divIframe").html("<iframe class=\"htmlIframe\" src=\"data/trouble/漯驻下13/index.html\"></iframe></div>");
-    $(".divIframe").show();
-});
-var marker14 = L.marker([33.091685366323716, 113.96377801895143], {
-    icon: L.icon({
-        iconUrl: 'image/trouble/hong.png',
-        iconSize: [24, 39],
-        className: "trouble"
-    })
-}).on("click", function () {
-    $(".modal-title").html("隐患点一事一档");
-    $("#troubleModal").modal('show');
-    $(".divIframe").html("<iframe class=\"htmlIframe\" src=\"data/trouble/漯驻下12/index.html\"></iframe></div>");
-    $(".divIframe").show();
-});
-var marker15 = L.marker([33.094327974104885,113.96193265914918], {
-    icon: L.icon({
-        iconUrl: 'image/trouble/huang.png',
-        iconSize: [24, 39],
-        className: "trouble"
-    })
-}).on("click", function () {
-    $(".modal-title").html("隐患点一事一档");
-    $("#troubleModal").modal('show');
-    $(".divIframe").html("<iframe class=\"htmlIframe\" src=\"data/trouble/漯驻下7/index.html\"></iframe></div>");
-    $(".divIframe").show();
-});
+for(var j = 0; j < troubles.length ; j++){
+    var marker = L.marker(troubles[j].coord, {
+        icon: L.icon({
+            iconUrl: 'image/trouble/'+troubles[j].level+'.png',
+            iconSize: [24, 39],
+            className: "trouble"
+        }),title: troubles[j]
+    }).on("click", function (evt) {
+        $(".modal-title").html("隐患点一事一档");
+        $("#troubleModal").modal('show');
+        $(".divIframe").html("<iframe class=\"htmlIframe\" allowfullscreen=\"false\"  src=\"data/trouble/"+evt.target.options.title.name+"/index.html\"></iframe></div>");
+        $(".divIframe").show();
+    });
+    markersLayer.addLayer(marker);
+}
 
 markersLayer.addLayer(marker1);
 markersLayer.addLayer(marker2);
@@ -238,10 +169,3 @@ markersLayer.addLayer(marker5);
 markersLayer.addLayer(marker6);
 markersLayer.addLayer(marker7);
 markersLayer.addLayer(marker8);
-markersLayer.addLayer(marker9);
-markersLayer.addLayer(marker10);
-markersLayer.addLayer(marker11);
-markersLayer.addLayer(marker12);
-markersLayer.addLayer(marker13);
-markersLayer.addLayer(marker14);
-markersLayer.addLayer(marker15);
