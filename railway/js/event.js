@@ -5,25 +5,35 @@
 function addTroubleEvent() {
 
     function addTroubleMarker(troubles) {
-        var troubleEventLayers = L.featureGroup();
+        var troubleEventLayers = L.markerClusterGroup({
+            showCoverageOnHover: false,
+            spiderfyOnMaxZoom: true,
+            removeOutsideVisibleBounds: true,
+            maxClusterRadius: 10
+        });
 
         for (var i = 0; i < troubles.length; i++) {
             var trouble = troubles[i];
-
-            var html = "";
-
-            // 整合所有的属性
-            for(var key in trouble){
-                html += key + "：" + trouble[key] + "<br>";
-            }
-
-            L.marker(trouble.coord, {
+            L.marker([parseFloat(trouble.纬度), parseFloat(trouble.经度)], {
                 icon: L.icon({
-                    iconUrl: 'image/trouble/' + trouble.level + '.png',
-                    iconSize: [24, 39],
-                    className: "trouble"
-                })
-            }).bindPopup(html).addTo(troubleEventLayers);
+                    // iconUrl: 'image/trouble/' + trouble.level + '.png',
+                    iconUrl: 'image/trouble/hong.png',
+                    iconSize: [32, 32]
+                }),
+                data: trouble
+            }).on("click", function (event) {
+                var html = "<table class='tipClass' border='1' cellspacing='0' cellpadding='0'>";
+                // 整合所有的属性
+                var trouble = event.target.options.data;
+                for (var key in trouble) {
+                    if (key == "纬度" || key == "经度") {
+                    }
+                    else html += "<tr><th>" + key + "</th><td>" + (trouble[key] == "拒绝提供" ? "" : trouble[key]) + "</td></tr>";
+                }
+                html += "</table>";
+                $(".popDiv").html(html);
+                $(".popDiv").show();
+            }).addTo(troubleEventLayers);
         }
         return troubleEventLayers;
     }

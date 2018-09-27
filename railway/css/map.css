@@ -16,6 +16,14 @@ html, body, #map {
     border: none;
 }
 
+.leaflet-popup-tip-container {
+    display: none;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 0px;
+}
+
 .logoDIV {
     margin-top: 10px;
     text-align: center;
@@ -36,4 +44,35 @@ html, body, #map {
     font-size: 8px;
     font-weight: bold;
     -webkit-text-stroke: 1px #fff;
+}
+
+.tipClass {
+    font-family: verdana, arial, sans-serif;
+    font-size: 11px;
+    color: #333333;
+    border: 1px #666666;
+    border-collapse: collapse;
+}
+
+.tipClass th {
+    width: 112px;
+    border: 1px solid #666666;
+    padding: 8px;
+    background-color: #dedede;
+}
+
+.tipClass td {
+    width: 340px;
+    border: 1px solid #666666;
+    padding: 8px;
+    background-color: #ffffff;
+}
+
+.popDiv{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 999;
+    padding: 10px;
+    background-color: #fff;
 }

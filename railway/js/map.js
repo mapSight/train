@@ -16,6 +16,11 @@ function initMap() {
         layers: [sateLiteGroup]
     });
 
+    map.on("click", function (e) {
+        $(".popDiv").hide();
+        console.log(e.latlng);
+    });
+
     // 动态更新
     map.on("zoomend", function () {
         if (map.getZoom() > 14) {
