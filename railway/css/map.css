@@ -69,6 +69,7 @@ html, body, #map {
 }
 
 .popDiv{
+    display: none;
     position: fixed;
     right: 10px;
     bottom: 10px;

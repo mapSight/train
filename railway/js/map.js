@@ -13,7 +13,9 @@ function initMap() {
     map = L.map('map', {
         center: [30.60968830483705, 114.41888988018037],
         zoom: 9,
-        layers: [sateLiteGroup]
+        layers: [sateLiteGroup],
+        zoomControl:false,
+        attributionControl:false
     });
 
     map.on("click", function (e) {

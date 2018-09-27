@@ -9,15 +9,14 @@ function addTroubleEvent() {
             showCoverageOnHover: false,
             spiderfyOnMaxZoom: true,
             removeOutsideVisibleBounds: true,
-            maxClusterRadius: 10
+            maxClusterRadius: 40
         });
 
         for (var i = 0; i < troubles.length; i++) {
             var trouble = troubles[i];
             L.marker([parseFloat(trouble.纬度), parseFloat(trouble.经度)], {
                 icon: L.icon({
-                    // iconUrl: 'image/trouble/' + trouble.level + '.png',
-                    iconUrl: 'image/trouble/hong.png',
+                    iconUrl: 'image/trouble/' + trouble.安全色 + '.png',
                     iconSize: [32, 32]
                 }),
                 data: trouble
@@ -26,7 +25,7 @@ function addTroubleEvent() {
                 // 整合所有的属性
                 var trouble = event.target.options.data;
                 for (var key in trouble) {
-                    if (key == "纬度" || key == "经度") {
+                    if (key == "纬度" || key == "经度" || key == "安全色") {
                     }
                     else html += "<tr><th>" + key + "</th><td>" + (trouble[key] == "拒绝提供" ? "" : trouble[key]) + "</td></tr>";
                 }

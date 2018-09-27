@@ -10,7 +10,7 @@ function addRailway() {
         "weight": 5,　　　　//线宽
         "lineCap": "square",
         "opacity": 1,　　//透明度
-        "color": "#da251c",　//颜色
+        "color": "#3e3e3e",　//颜色
         "pulseColor": "#FFFFFF"　　//块颜色
     };
 
@@ -65,7 +65,7 @@ function addRailway() {
             L.marker([s.lat, s.lng], {
                 icon: L.icon({
                     iconUrl: 'image/station.png',
-                    iconSize: [24, 24]
+                    iconSize: [18, 18]
                 }),
                 title: s.name
             }).addTo(stationLayer);

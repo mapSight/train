@@ -15,22 +15,48 @@ function addAssistPoint() {
      ************************************************************************************************************************************************************/
 
     // 添加驻马店西站车站
-    L.marker([33.0025272757331, 113.9726507663727], {
-        icon: L.icon({
-            iconUrl: 'image/station/1.png',
-            iconSize: [140, 56],
-            iconAnchor: [150, 20]
-        })
-    }).addTo(assistMarkersLayer);
+    // L.marker([33.0025272757331, 113.9726507663727], {
+    //     icon: L.icon({
+    //         iconUrl: 'image/station/1.png',
+    //         iconSize: [140, 56],
+    //         iconAnchor: [150, 20]
+    //     })
+    // }).addTo(assistMarkersLayer);
+    //
+    // // 添加漯河西站车站
+    // L.marker([33.57483256261765, 113.95955085754396], {
+    //     icon: L.icon({
+    //         iconUrl: 'image/station/2.png',
+    //         iconSize: [95, 56],
+    //         iconAnchor: [115, 20]
+    //     })
+    // }).addTo(assistMarkersLayer);
 
-    // 添加漯河西站车站
-    L.marker([33.57483256261765, 113.95955085754396], {
-        icon: L.icon({
-            iconUrl: 'image/station/2.png',
-            iconSize: [95, 56],
-            iconAnchor: [115, 20]
-        })
-    }).addTo(assistMarkersLayer);
+    function addStationMarker(stations) {
+        for (var i = 0; i < stations.length; i++) {
+            var s = stations[i];
+            L.marker([s.lat, s.lng], {
+                icon: L.icon({
+                    iconUrl: "image/station/" + s.name + ".png",
+                    iconSize: [60, 40],
+                    iconAnchor:[30, 54]
+                }),
+                title: s.name
+            }).addTo(assistMarkersLayer);
+        }
+    }
+
+    // 京广铁路车站
+    addStationMarker(DATA_STATIONS_JG);
+
+    // 汉宜铁路车站
+    addStationMarker(DATA_STATIONS_HY);
+
+    // 合武铁路车站
+    addStationMarker(DATA_STATIONS_HW);
+
+    // 宜万铁路车站
+    addStationMarker(DATA_STATIONS_YW);
 
     /************************************************************************************************************************************************************
      ***************************************************** 派出所 ************************************************************************************************
