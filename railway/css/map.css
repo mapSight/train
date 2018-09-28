@@ -57,14 +57,14 @@ html, body, #map {
 .tipClass th {
     width: 112px;
     border: 1px solid #666666;
-    padding: 8px;
+    padding: 4px;
     background-color: #dedede;
 }
 
 .tipClass td {
-    width: 340px;
+    width: 300px;
     border: 1px solid #666666;
-    padding: 8px;
+    padding: 4px;
     background-color: #ffffff;
 }
 
