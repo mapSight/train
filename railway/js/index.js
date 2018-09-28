@@ -53,6 +53,44 @@ addTroubleEvent();
 
 addControl();
 
+// 搜索
+$("#searchBtn").on("click", function () {
+    var type = $("#railway_type").val();
+    var numberL = parseFloat($("#numberL").val()).toFixed(0); // 里程
+    var numberR = parseFloat($("#numberR").val()).toFixed(0); // 小里程
+
+    var data_sourece = null;
+    if (type == "jg") {
+        data_sourece = DATA_MILESTONE_JG;
+    } else if (type == "hy") {
+        data_sourece = DATA_MILESTONE_HY;
+    } else if (type == "hw") {
+        data_sourece = DATA_MILESTONE_HW;
+    } else if (type == "yw") {
+        data_sourece = DATA_MILESTONE_YW;
+    }
+
+    for (var i = 0; i < data_sourece.length; i++) {
+        var mile = parseFloat(data_sourece[i].mile).toFixed(0);
+        var lat = parseFloat(data_sourece[i].lat);
+        var lon = parseFloat(data_sourece[i].lon);
+        if (mile == numberL) {
+            if (numberR == "NaN" || i == data_sourece.length - 1) {
+                map.flyTo([lat, lon], map.getMaxZoom() - 1);
+            } else {
+                var latNext = parseFloat(data_sourece[i + 1].lat);
+                var lonNext = parseFloat(data_sourece[i + 1].lon);
+                map.fitBounds([
+                    [lat, lon],
+                    [latNext, lonNext]
+                ], {padding: L.point(50, 50), maxZoom: map.getMaxZoom() - 1});
+            }
+            return false;
+        }
+    }
+
+});
+
 
 
 

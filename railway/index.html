@@ -12,15 +12,30 @@
     <link rel="stylesheet" href="libs/leaflet.markercluster/MarkerCluster.css">
     <link rel="stylesheet" href="libs/leaflet.markercluster/MarkerCluster.Default.css">
     <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
     <script src="libs/leaflet.js"></script>
     <script src="libs/leaflet-ant-path.js"></script>
     <script src="libs/leaflet.markercluster/leaflet.markercluster.js"></script>
     <script src="libs/jquery-1.11.0.js"></script>
-
+    <script src="libs/bootstrap/js/bootstrap.js"></script>
 
 
 </head>
 <body>
+<div class="searchDiv">
+    <!--搜索框-->
+    <select id="railway_type" class="form-control" style="width: 110px;float: left;margin-right: 10px">
+        <option value="jg">京广高铁</option>
+        <option value="hy">汉宜高铁</option>
+        <option value="hw">合武高铁</option>
+        <option value="yw">宜万高铁</option>
+    </select>
+    <div class="unit">K</div>
+    <input id="numberL" type="number" style="float: left;width: 100px;" class="form-control" placeholder="">
+    <div class="unit">+</div>
+    <input id="numberR" type="number" style="float: left;width: 100px;" class="form-control" placeholder="">
+    <button id="searchBtn" class="btn btn-default btn-success" style="margin-left: 10px;">查询</button>
+</div>
 <div class="popDiv">
     <!--popup容器-->
 </div>
@@ -31,7 +46,7 @@
 <script src="data/railway.js"></script>
 <script src="data/station.js"></script>
 <script src="data/trouble.js"></script>
-<script src="data/milistone.js"></script>
+<script src="data/milestone.js"></script>
 
 <script src="js/controls.js"></script>
 <script src="js/railway.js"></script>

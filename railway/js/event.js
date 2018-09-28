@@ -7,19 +7,20 @@ function addTroubleEvent() {
     function addTroubleMarker(troubles) {
         var troubleEventLayers = L.markerClusterGroup({
             showCoverageOnHover: false,
-            spiderfyOnMaxZoom: true,
+            spiderfyOnMaxZoom: false,
             removeOutsideVisibleBounds: true,
             maxClusterRadius: 40
         });
 
         for (var i = 0; i < troubles.length; i++) {
             var trouble = troubles[i];
+
             L.marker([parseFloat(trouble.纬度), parseFloat(trouble.经度)], {
                 icon: L.icon({
                     iconUrl: 'image/trouble/' + trouble.安全色 + '.png',
                     iconSize: [32, 32]
                 }),
-                title:trouble.铁路里程,
+                title: trouble.铁路里程,
                 data: trouble
             }).on("click", function (event) {
                 var html = "<table class='tipClass' border='1' cellspacing='0' cellpadding='0'>";
