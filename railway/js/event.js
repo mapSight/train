@@ -7,7 +7,7 @@ function addTroubleEvent() {
     function addTroubleMarker(troubles) {
         var troubleEventLayers = L.markerClusterGroup({
             showCoverageOnHover: false,
-            spiderfyOnMaxZoom: false,
+            spiderfyOnMaxZoom: true,
             removeOutsideVisibleBounds: true,
             maxClusterRadius: 40
         });
@@ -29,7 +29,7 @@ function addTroubleEvent() {
                 for (var key in trouble) {
                     if (key == "纬度" || key == "经度" || key == "安全色") {
                     }
-                    else html += "<tr><th>" + key + "</th><td>" + (trouble[key] == "拒绝提供" ? "" : trouble[key]) + "</td></tr>";
+                    else html += "<tr><th>" + key + "</th><td>" + trouble[key] + "</td></tr>";
                 }
                 html += "</table>";
                 $(".popDiv").html(html);
