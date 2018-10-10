@@ -7,10 +7,21 @@ function addRailway() {
     var high_way_style = {
         "paused": true,   　　//暂停  初始化状态
         "dashArray": [10, 20],　//间隔样式
-        "weight": 5,　　　　//线宽
+        "weight": 3,　　　　//线宽
         "lineCap": "square",
         "opacity": 1,　　//透明度
         "color": "#3e3e3e",　//颜色
+        "pulseColor": "#FFFFFF"　　//块颜色
+    };
+
+    // 城际铁路样式
+    var city_way_style = {
+        "paused": true,   　　//暂停  初始化状态
+        "dashArray": [10, 20],　//间隔样式
+        "weight": 3,　　　　//线宽
+        "lineCap": "square",
+        "opacity": 1,　　//透明度
+        "color": "#d99691",　//颜色
         "pulseColor": "#FFFFFF"　　//块颜色
     };
 
@@ -25,6 +36,18 @@ function addRailway() {
 
     // 宜万铁路线
     railway_yw = L.polyline.antPath(DATA_RAILWAY_YW, high_way_style);
+
+    // 武九客专线
+    railway_wj = L.polyline.antPath(DATA_RAILWAY_WJ, city_way_style);
+
+    // 武冈城际线
+    railway_wg = L.polyline.antPath(DATA_RAILWAY_WG, city_way_style);
+
+    // 武孝城际线
+    railway_wx = L.polyline.antPath(DATA_RAILWAY_WX, city_way_style);
+
+    // 武咸城际线
+    railway_wxx = L.polyline.antPath(DATA_RAILWAY_WXX, city_way_style);
 
     /**
      ************************************************************加载里程
@@ -54,6 +77,18 @@ function addRailway() {
 
     // 宜万铁路里程
     mileStone_yw = addMileMarker(DATA_MILESTONE_YW);
+
+    // 武九客专里程
+    mileStone_wj = addMileMarker(DATA_MILESTONE_WJ);
+
+    // 武冈城际里程
+    mileStone_wg = addMileMarker(DATA_MILESTONE_WG);
+
+    // 武孝城际里程
+    mileStone_wx = addMileMarker(DATA_MILESTONE_WX);
+
+    // 武咸城际里程
+    mileStone_wxx = addMileMarker(DATA_MILESTONE_WXX);
 
     /**
      * ***************************************************添加高铁车站
