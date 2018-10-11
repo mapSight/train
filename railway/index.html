@@ -18,27 +18,73 @@
     <script src="libs/leaflet.markercluster/leaflet.markercluster.js"></script>
     <script src="libs/jquery-1.11.0.js"></script>
     <script src="libs/bootstrap/js/bootstrap.js"></script>
-
-
 </head>
 <body>
 <div class="searchDiv">
-    <!--搜索框-->
-    <select id="railway_type" class="form-control" style="width: 110px;float: left;margin-right: 10px">
-        <option value="jg">京广高铁</option>
-        <option value="hy">汉宜高铁</option>
-        <option value="hw">合武高铁</option>
-        <option value="yw">宜万高铁</option>
-        <option value="wj">武九客专</option>
-        <option value="wg">武冈城际</option>
-        <option value="wx">武孝城际</option>
-        <option value="wxx">武咸城际</option>
-    </select>
-    <div class="unit">K</div>
-    <input id="numberL" type="number" style="float: left;width: 100px;" class="form-control" placeholder="">
-    <div class="unit">+</div>
-    <input id="numberR" type="number" style="float: left;width: 100px;" class="form-control" placeholder="">
-    <button id="searchBtn" class="btn btn-default btn-success" style="margin-left: 10px;">查询</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <select id="railway_type" class="form-control" style="width: 165px">
+                    <option value="jg">京广高铁</option>
+                    <option value="hy">汉宜高铁</option>
+                    <option value="hw">合武高铁</option>
+                    <option value="yw">宜万高铁</option>
+                    <option value="wj">武九客专</option>
+                    <option value="wg">武冈城际</option>
+                    <option value="wx">武孝城际</option>
+                    <option value="wxx">武咸城际</option>
+                </select>
+            </div>
+            <div class="col-lg-1">
+                <div class="unit">K</div>
+            </div>
+            <div class="col-lg-2">
+                <input id="numberL" type="number" class="form-control" placeholder="" style="width: 110px">
+            </div>
+            <div class="col-lg-1">
+                <div class="unit">+</div>
+            </div>
+            <div class="col-lg-2">
+                <input id="numberR" type="number" class="form-control" placeholder="" style="width: 110px">
+            </div>
+            <div class="col-lg-3">
+                <button id="searchBtn" class="btn btn-default btn-success" style="width: 165px">查询</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="weatherControl" type="checkbox">
+                    </span>
+                    <span class="form-control" style="padding: 6px 8px;width: 172px;">显示天气(全国雷达拼图)</span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <select id="radar_time" class="form-control" style="width: 220px;display: none">
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <div id="btnGroup" class="btn-group" role="group" style="display: none">
+                    <button id="btn_previous" type="button" class="btn btn-default" title="上一张">
+                        <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                    </button>
+                    <button id="btn_play" type="button" class="btn btn-default" title="播放">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </button>
+                    <button id="btn_next" type="button" class="btn btn-default" title="下一张">
+                        <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <button id="showWuhan" class="btn btn-default btn-success" style="display: none">武汉铁路局</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="legend">
+    <img src="image/radar.png">
 </div>
 <div class="popDiv">
     <!--popup容器-->
@@ -46,7 +92,8 @@
 <!--地图容器-->
 <div id="map">
     <div class="logoDIV"><img class="logo" src="image/logo.png"></div>
-    <div class="logoDIV"><img class="logo" src="image/copyright.png" style="width: 12%;bottom: 5px;margin-left: -6%;"></div>
+    <div class="logoDIV"><img class="logo" src="image/copyright.png" style="width: 12%;bottom: 5px;margin-left: -6%;">
+    </div>
 </div>
 <script src="data/railway.js"></script>
 <script src="data/station.js"></script>
@@ -58,6 +105,7 @@
 <script src="js/event.js"></script>
 <script src="js/assist.js"></script>
 <script src="js/map.js"></script>
+<script src="js/radar.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

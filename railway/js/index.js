@@ -108,8 +108,62 @@ $("#searchBtn").on("click", function () {
             return false;
         }
     }
-
 });
+
+// 铁路天气
+$("#weatherControl").on("click", function () {
+    if ($(this).prop("checked")) {
+        radar_module.addRadar($("#radar_time"));
+        radar_module.addRainStation();
+        $("#radar_time").show();
+        $("#btnGroup").show();
+        $("#showWuhan").show();
+    } else {
+        radar_module.removeRadar();
+        $("#radar_time").hide();
+        $("#btnGroup").hide();
+        $("#showWuhan").hide();
+    }
+});
+
+$("#btn_play").on("click", function () {
+    if ($(this).attr("title") == "播放") {
+        radar_module.play();
+        $(this).attr("title", "停止");
+        $(this).find("span").removeClass("glyphicon-play").addClass("glyphicon-pause");
+    } else {
+        radar_module.stop();
+        $(this).attr("title", "播放");
+        $(this).find("span").removeClass("glyphicon-pause").addClass("glyphicon-play");
+    }
+});
+
+$("#radar_time").on("change", function () {
+    var t = $(this).val();
+    radar_module.showSingle(t);
+});
+
+$("#btn_previous").on("click", function () {
+    var v = $("#radar_time option:selected").next().val();
+    if (v){
+        $("#radar_time").val(v);
+        radar_module.showSingle(v);
+    }
+});
+
+$("#btn_next").on("click", function () {
+    var v = $("#radar_time option:selected").prev().val();
+    if (v){
+        $("#radar_time").val(v);
+        radar_module.showSingle(v);
+    }
+});
+
+$("#showWuhan").on("click", function () {
+    radar_module.showExtent();
+});
+
+
 
 
 
