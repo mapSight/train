@@ -166,46 +166,6 @@ $("#showWuhan").on("click", function () {
     radar_module.showExtent();
 });
 
-function login() {
-    $.ajax({
-        type: "POST",
-        cache: false,
-        async: false,
-        //url: "ashx/CheckLogin.ashx?Ran=" + Math.random(),
-        url: "http://shrain.cn:8888/ashx/CheckLogin.ashx",
-        data: {
-            userName: "whj",
-            userPwd: "1"
-        },
-        beforeSend: function() {},
-        success: function(result) {
-            alert(result);
-            switch (result) {
-                case "0":
-                    document.location.href = "./RealRain/index.aspx";
-                    break;
-                case "1":
-                    $("#message").text("用户不存在！");
-                    $("#uname").focus();
-                    break;
-                case "2":
-                    $("#message").text("用户密码错误！");
-                    $("#upwd").focus();
-                    break;
-                default:
-
-                    $("#message").text("连接数据库错误！");
-                    $("#upwd").focus();
-                    break;
-            }
-        },
-        complete: function() {},
-        error: function(err) {
-            $("#message").text(err);
-        }
-    });
-}
-
 
 
 
