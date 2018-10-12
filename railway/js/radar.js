@@ -28,22 +28,103 @@ function RADAR() {
     // 动图索引
     var interval = -1;
 
-    // 添加雨量站点图层
-    this.addRainStation = function () {
+    // 图例元素
+    var legendDom = null;
+
+    // 降雨报告dom
+    var reportDom = null;
+
+    /**
+     * 显示雷达雨量站的图例
+     */
+    this.showPanel = function (legend) {
+        legendDom = legend;
+        $(legendDom).show();
+        $(reportDom).show();
+    };
+
+    /**
+     * 隐藏图例
+     */
+    this.hidePanel = function () {
+        $(legendDom).hide();
+        $(reportDom).hide();
+    };
+
+    /**
+     * 添加雨量站点图层
+     */
+    this.addRainStation = function (report) {
+        reportDom = report;
 
         rainStationLayer.clearLayers();
 
-        var d1 = {lat: 30.60999302096146, lng: 114.4435501098633};
-        var d2 = {lat: 30.57896245918393, lng: 114.41471099853516};
-        var d3 = {lat: 30.60423095372707, lng: 114.35806274414064};
+        var data = [
+            {lat: 30.597434, lng: 114.421620, name: "孝感", h1: 20},
+            {lat: 30.538829, lng: 114.450459, name: "武汉北", h1: 16},
+            {lat: 30.456923, lng: 114.453721, name: "襄阳南", h1: 12},
+            {lat: 30.364284, lng: 114.427542, name: "汉口", h1: 10.5},
+            {lat: 30.263404, lng: 114.366130, name: "横店", h1: 0},
+            {lat: 30.292052, lng: 114.382181, name: "咸宁", h1: 5.2}
+        ];
 
-        var html = "<div><table><tr><td>站名:</td><td>示例站名1</td></tr><tr><td>雨量:</td><td class='rain'>10.2</td></tr></table></div>";
-        L.marker(d1, {icon: L.divIcon({html:html, className:"rainStationIcon"})}).addTo(rainStationLayer);
-        L.marker(d2, {icon: L.divIcon({html:html, className:"rainStationIcon"})}).addTo(rainStationLayer);
-        L.marker(d3, {icon: L.divIcon({html:html, className:"rainStationIcon"})}).addTo(rainStationLayer);
-
+        for (var i = 0; i < data.length; i++) {
+            var d = data[i];
+            var className = "";
+            if (d.h1 >= 10) {
+                className = "rain";
+            } else if (d.h1 > 0) {
+                className = "rainN";
+            }
+            var html = "";
+            if (className){
+                html = "<div><table><tr><td>站名:</td><td>" + d.name + "</td></tr><tr><td>雨量:</td><td class='" + className + "'>" + d.h1 + "</td></tr></table></div>";
+            }
+            L.marker([d.lat, d.lng], {
+                title:d.name,
+                icon: L.divIcon({
+                    html: html,
+                    className: "rainStationIcon"
+                })
+            }).addTo(rainStationLayer);
+        }
         rainStationLayer.addTo(map);
-    }
+
+
+        // 过滤数据生成报表
+        var reportData = data.filter(function (item) {
+            return item.h1 >= 10;
+        });
+        // 排序
+        reportData.sort(function (a, b) {
+           return -(a.h1 - b.h1);
+        });
+        var html = "";
+        for (var i = 0; i < reportData.length; i++){
+            var r = reportData[i];
+            html += "<tr><td><a onclick='radar_module.zoomStation(\"" + r.lat + "|" + r.lng + "\")'>" + r.name + ":" + r.h1 + "mm</a></td></tr>";
+        }
+
+        // 报告格式
+        html = "<table class=\"table table-bordered table-striped\"><caption><h5>监测报告：武汉铁路局管辖范围内共249个监测点，小时降雨量超过<b>10mm</b>的监测站共有<b>" + reportData.length + "</b>个，分别为：</h5></caption>" + html + "</table>";
+
+        $(reportDom).empty();
+        $(reportDom).html(html);
+
+    };
+
+    this.zoomStation = function (d) {
+        var lat = d.split("|")[0];
+        var lng = d.split("|")[1];
+        map.flyTo([lat, lng], 16);
+    };
+
+    /**
+     * 移除雨量站
+     */
+    this.removeRainStation = function () {
+        map.removeLayer(rainStationLayer);
+    };
 
     /**
      * 添加雷达图
@@ -89,20 +170,23 @@ function RADAR() {
      * 显示单张
      */
     this.showSingle = function (t) {
-        if (interval != -1){
+        if (interval != -1) {
             clearInterval(interval);
         }
         var year = t.substring(0, 4);
         var month = t.substring(4, 6);
         var day = t.substring(6, 8);
         var hour = t.substring(8, 10);
-        var min =t.substring(10, 12);
+        var min = t.substring(10, 12);
         var url = "QR/" + year + "/" + month + "/" + day + "/" + year + month + day + hour + min + ".PNG";
         radarLayer.setUrl(RADAR_PIC_URL + url);
     };
 
+    /**
+     * 居中武汉铁路局范围
+     */
     this.showExtent = function () {
-        map.fitBounds(RADAR_WUHAN_EXTENT);
+        map.flyToBounds(RADAR_WUHAN_EXTENT);
     };
 
     /**

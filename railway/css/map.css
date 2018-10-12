@@ -116,32 +116,76 @@ html, body, #map {
     margin-top: 10px !important;
 }
 
-.rainStationIcon{
+.rainStationIcon {
     background-color: greenyellow;
     border-radius: 6px;
 }
-.rainStationIcon div{
+
+.rainStationIcon div {
     color: white;
     margin-left: 20px;
     margin-top: -10px;
     width: 100px;
 }
-.rainStationIcon table td{
+
+.rainStationIcon table td {
     padding: 1px;
 }
 
-.rain{
+.rain {
     color: red;
     font-weight: bold;
 }
-.legend{
+
+.rainN{
+    color: green;
+}
+
+.legend {
     position: fixed;
     bottom: 5px;
     right: 5px;
-    text-align: right;
     z-index: 999;
+    text-align: right;
+    display: none;
 }
-.legend img{
+.legend img {
     width: 50%;
 }
+.report{
+    background-color: white;
+    position: fixed;
+    bottom: 5px;
+    right: 90px;
+    max-height: 350px;
+    overflow: auto;
+    z-index: 999;
+    display: none;
+}
+
+.report table {
+    width: 335px;
+    margin-bottom: 0px;
+}
+.report table b{
+    color: red;
+}
+
+.report table caption {
+    background-color: #c2dee1;
+    padding: 0px 8px;
+    color: #060606;
+}
+
+.report table tr td{
+    font-weight: bold;
+}
+
+.report table a{
+    text-decoration: none;
+    cursor: pointer;
+    color: fuchsia;
+}
+
+
 
