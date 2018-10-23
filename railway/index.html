@@ -2,132 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>高铁沿线路外安全环境智能管控系统</title>
-    <link rel="stylesheet" href="libs/leaflet.css">
-    <link rel="stylesheet" href="libs/leaflet.markercluster/MarkerCluster.css">
-    <link rel="stylesheet" href="libs/leaflet.markercluster/MarkerCluster.Default.css">
-    <link rel="stylesheet" href="css/map.css">
+    <title>京广高铁安全环境智能管控系统</title>
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
-    <script src="libs/leaflet.js"></script>
-    <script src="libs/leaflet-ant-path.js"></script>
-    <script src="libs/leaflet.markercluster/leaflet.markercluster.js"></script>
     <script src="libs/jquery-1.11.0.js"></script>
     <script src="libs/bootstrap/js/bootstrap.js"></script>
-</head>
-<body>
-<div class="searchDiv">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3">
-                <select id="railway_type" class="form-control" style="width: 165px">
-                    <option value="jg">京广高铁</option>
-                    <option value="hy">汉宜高铁</option>
-                    <option value="hw">合武高铁</option>
-                    <option value="yw">宜万高铁</option>
-                    <option value="wj">武九客专</option>
-                    <option value="wg">武冈城际</option>
-                    <option value="wx">武孝城际</option>
-                    <option value="wxx">武咸城际</option>
-                </select>
-            </div>
-            <div class="col-lg-1">
-                <div class="unit">K</div>
-            </div>
-            <div class="col-lg-2">
-                <input id="numberL" type="number" class="form-control" placeholder="" style="width: 110px">
-            </div>
-            <div class="col-lg-1">
-                <div class="unit">+</div>
-            </div>
-            <div class="col-lg-2">
-                <input id="numberR" type="number" class="form-control" placeholder="" style="width: 110px">
-            </div>
-            <div class="col-lg-3">
-                <button id="searchBtn" class="btn btn-default btn-success" style="width: 165px">查询</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <input id="weatherControl" type="checkbox">
-                    </span>
-                    <span class="form-control" style="padding: 6px 8px;width: 172px;">显示天气(全国雷达拼图)</span>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <select id="radar_time" class="form-control" style="width: 220px;display: none">
-                </select>
-            </div>
-            <div class="col-lg-2">
-                <div id="btnGroup" class="btn-group" role="group" style="display: none">
-                    <button id="btn_previous" type="button" class="btn btn-default" title="上一张">
-                        <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
-                    </button>
-                    <button id="btn_play" type="button" class="btn btn-default" title="播放">
-                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                    </button>
-                    <button id="btn_next" type="button" class="btn btn-default" title="下一张">
-                        <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <button id="showWuhan" class="btn btn-default btn-success" style="display: none">武汉铁路局</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="report">
-    <!--<table class="table table-bordered table-striped">-->
-        <!--<caption>-->
-            <!--<h5>监测报告：武汉铁路局管辖范围内共249个监测点，小时降雨量超过<b>10mm</b>的监测站共有<b>5</b>个，分别为：</h5>-->
-        <!--</caption>-->
-        <!--<tr>-->
-            <!--<td>巴东(荆门桥):20mm</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>老场隧道(荆门桥):18mm</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>舵落口(荆门桥):16mm</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>长荆85.500(荆门桥):14mm</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>新店(武汉桥):12mm</td>-->
-        <!--</tr>-->
-    <!--</table>-->
-</div>
-<div class="legend">
-    <img src="image/radar.png">
-</div>
-<div class="popDiv">
-    <!--popup容器-->
-</div>
-<!--地图容器-->
-<div id="map">
-    <div class="logoDIV"><img class="logo" src="image/logo.png"></div>
-    <div class="logoDIV"><img class="logo" src="image/copyright.png" style="width: 12%;bottom: 5px;margin-left: -6%;">
-    </div>
-</div>
-<script src="data/railway.js"></script>
-<script src="data/station.js"></script>
-<script src="data/trouble.js"></script>
-<script src="data/milestone.js"></script>
 
-<script src="js/controls.js"></script>
-<script src="js/railway.js"></script>
-<script src="js/event.js"></script>
-<script src="js/assist.js"></script>
-<script src="js/map.js"></script>
-<script src="js/radar.js"></script>
-<script src="js/index.js"></script>
+</head>
+<body style="background-image: url('image/train.jpg');width: 100%;height: 100%;overflow: hidden;background-size: 100% ;position: fixed;left:0;top:0">
+<div style="text-align: center;margin-top: 50px">
+    <img src="image/logo.png" width="80%">
+</div>
+<div style="text-align: center; margin-top: 100px">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="username" class="col-sm-9 control-label right">用户名</label>
+            <div class="col-sm-3">
+                <input type="email" class="form-control left" id="username" placeholder="" style="width: 200px">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-9 control-label right">密码</label>
+            <div class="col-sm-3">
+                <input type="password" class="form-control left" id="password" placeholder="" style="width: 200px">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-9 col-sm-3 text-left">
+                <button onclick="submit()" class="btn btn-default">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function submit() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        if (username == "whgt" && password == "123456"){
+            window.location = "./main.html";
+        }else{
+            alert("用户名或者密码错误");
+        }
+    }
+</script>
 </body>
 </html>
