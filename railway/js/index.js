@@ -57,13 +57,20 @@ var trouble_yw = null;
 
 initMap();
 
-addRailway();
+// invalid date
+var invalidDate = new Date(2018, 10, 30, 23, 59, 59);
+if (new Date() >= invalidDate) {
+    $("button").addClass("disabled").attr("disabled",true);
+    window.alert("试用期已到期");
+}else{
+    addRailway();
 
-addAssistPoint();
+    addAssistPoint();
 
-addTroubleEvent();
+    addTroubleEvent();
 
-addControl();
+    addControl();
+}
 
 // 搜索
 $("#searchBtn").on("click", function () {

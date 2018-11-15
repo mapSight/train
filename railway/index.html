@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
     <script src="libs/jquery-1.11.0.js"></script>
     <script src="libs/bootstrap/js/bootstrap.js"></script>
-
 </head>
 <body style="background-image: url('image/train.jpg');width: 100%;height: 100%;overflow: hidden;background-size: 100% ;position: fixed;left:0;top:0">
 <div style="text-align: center;margin-top: 50px">
@@ -28,21 +27,11 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-9 col-sm-3 text-left">
-                <button onclick="submit()" class="btn btn-default">登录</button>
+                <button onclick="submit()" class="btn btn-default disabled" disabled="disabled">登录</button>
             </div>
         </div>
     </div>
 </div>
-<script>
-    function submit() {
-        var username = $("#username").val();
-        var password = $("#password").val();
-        if (username == "whgt" && password == "123456"){
-            window.location = "./main.html";
-        }else{
-            alert("用户名或者密码错误");
-        }
-    }
-</script>
+<script src="js/login.js"></script>
 </body>
 </html>
